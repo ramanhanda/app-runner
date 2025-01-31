@@ -1,5 +1,6 @@
 from flask import Flask
 import time
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -9,7 +10,8 @@ def root_fn():
 @app.route('/time')
 def time_now():
     t = time.localtime()
-    return t
+    formatted_time = time.strftime('%Y-%m-%d %H:%M:%S', t)  # Format the time as a string
+    return formatted_time
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=3000)  # Run on port 3000
